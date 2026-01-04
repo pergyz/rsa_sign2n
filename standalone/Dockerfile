@@ -1,9 +1,15 @@
-FROM ubuntu:20.04
+FROM python:3.9-slim
 
-RUN apt update && apt install -y python3.8 python3-pip python3-gmpy2 libgmp-dev libmpfr-dev libmpc-dev && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y \
+    libffi-dev \
+    libgmp-dev \
+    libmpfr-dev \
+    libmpc-dev \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
-
 COPY . .
 
-RUN pip3 install -r requirements.txt
+RUN pip install --upgrade pip \
+ && pip install -r requirements.txt
