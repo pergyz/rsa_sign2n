@@ -8,14 +8,9 @@ on:
     branches: [ "release" ]
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
-    strategy:
-        matrix:
-            python-version: ["3.9"]
-
+    
     steps:
     - uses: actions/checkout@v6.0.1
     - uses: actions/setup-python@v6.1.0
